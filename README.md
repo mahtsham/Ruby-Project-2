@@ -1,22 +1,18 @@
-# Ruby-Project-2
-# Ruby-Project-1 (bubble_sort)
+## Enumerable Methods
 
-## Description
-There are following two methods in thhis repo.
-1. bubble_sort: If we pass an unsorted array to this method, this will sort the array in increasing order.
-2. bubble_sort_by: If we pass aa array block to this method, this will sort the array by comparing blocks like if lenght of left is big and right is small then swap else check next. 
+This is Advanced Building Blocks project putting emphasis on the use of enumerable methods.
 
 ## Cloning and installation
 
 Clone this repository to your local machine. To do this, click on the green "Code" button at the top right of list of files and copy the link in the prompt. Then, run the following command in your terminal:
 
-    git clone https://github.com/mahtsham/Ruby-Project-1.git
+    git clone https://github.com/mahtsham/Ruby-Project-2.git
 
-This will create a folder called 'Ruby-Project-1' inside the directory you ran the command in.
+This will create a folder called 'Ruby-Project-2' inside the directory you ran the command in.
 
 CD into that folder:
 
-    cd Ruby-Project-1
+    cd Ruby-Project-2
 
 Then run the following command:
 
@@ -42,7 +38,7 @@ Which should print a few lines about not finding any examples. This is ok and me
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues](https://github.com/mahtsham/Ruby-Project-1/issues).
+Feel free to check the [issues](https://github.com/mahtsham/Ruby-Project-2/issues).
 
 ## Show your support
 
