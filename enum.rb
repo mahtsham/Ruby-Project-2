@@ -19,6 +19,8 @@ module Enumerable
   end
 
   def my_select
+    return to_enum unless block_given?
+
     result = []
     my_each do |i|
       result.push(i) if yield(i)
