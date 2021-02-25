@@ -1,4 +1,4 @@
-## Enumerable-methods-ruby
+## Enumerable Methods
 
 This is Advanced Building Blocks project putting emphasis on the use of enumerable methods.
 
@@ -38,7 +38,7 @@ Which should print a few lines about not finding any examples. This is ok and me
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues](https://github.com/mahtsham/Ruby-Project-1/issues).
+Feel free to check the [issues](https://github.com/mahtsham/Ruby-Project-2/issues).
 
 ## Show your support
 
