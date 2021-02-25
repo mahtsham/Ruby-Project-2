@@ -1,4 +1,5 @@
 module Enumerable
+  # rubocop:disable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
   def my_each
     length = self.length
     length.times do |n|
@@ -40,28 +41,26 @@ module Enumerable
 
     true
   end
+
+  def my_any?(*arg)
+    if block_given?
+      my_each { |n| return true if yield(n) }
+
+    elsif arg.empty?
+      my_each do |v|
+        return true if v
+      end
+      return false
+
+    elsif arg[0].is_a? Regexp
+      my_each { |n| return true if arg[0].match(n) }
+
+    else
+      my_each { |n| return true if n == arg[0] }
+    end
+
+    false
+  end
+  # rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 end
 
-def my_any?
-  status = false
-  my_each do |x|
-    return !status if yield(x)
-  end
-  status
-end
-# 5. my_any? (example test cases)
-puts 'my_any?'
-p [7, 10, 3, 5].my_any?(&:even?) # => true
-p [7, 10, 4, 5].my_any?(&:even?) # => true
-p %w[q r s i].my_any? { |char| 'aeiou'.include?(char) } # => true
-p [7, 11, 3, 5].my_any?(&:even?) # => false
-p %w[q r s t].my_any? { |char| 'aeiou'.include?(char) } # => false
-# test cases required by tse reviewer
-p [1, nil, false].my_any?(1) # => true
-p [1, nil, false].my_any?(Integer) # => true
-p %w[dog door rod blade].my_any?(/z/) # => false
-p [1, 2, 3].my_any?(1) # => true
-p [3, 4, 7, 11].my_any?(Numeric) # => true
-p [3, 4, 7, 11].my_any?(Integer) # => true
-p %w[jes,umair,jesagain,hello].my_any?('jes') # => false
-puts
