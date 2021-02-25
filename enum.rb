@@ -24,9 +24,9 @@ module Enumerable
     result
   end
 
-  def my_all?(proc = nil)
+  def my_all?(arg = nil)
     ar = self
-    return ar.all?(proc) if proc
+    return ar.all?(arg) if arg
 
     if block_given?
       ar.my_each do |i|
@@ -79,6 +79,25 @@ module Enumerable
       count
     end
     count
+  end
+
+  def my_map(arg = nil)
+    a = []
+    return to_enum unless block_given?
+
+    if arg
+      my_each { |i| a.push arg.call(i) }
+    else
+      my_each { |i| a.push yield(i) }
+    end
+    a
+  end
+
+  def my_inject(arg = nil)
+    my_each do |n|
+      arg = arg ? yield(arg, n) : self[0]
+    end
+    arg
   end
   # rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 end
