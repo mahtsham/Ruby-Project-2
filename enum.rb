@@ -61,6 +61,9 @@ module Enumerable
 
     false
   end
+
+  def my_none?(input = nil, &block)
+    !my_any?(input, &block)
+  end
   # rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 end
-
