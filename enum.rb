@@ -94,9 +94,9 @@ module Enumerable
     return to_enum unless block_given?
 
     if arg
-      my_each { |i| a.push arg.call(i) }
+      my_each { |e| a.push arg.call(e) }
     else
-      my_each { |i| a.push yield(i) }
+      my_each { |e| a.push yield(e) }
     end
     a
   end
@@ -113,3 +113,11 @@ end
 def multiply_els(array)
   array.my_inject(1) { |product, i| product * i }
 end
+#8. my_map
+puts "my_map"
+p [1,2,3].my_map { |n| 2 * n } # => [2,4,6]
+p ["Hey", "Jude"].my_map { |word| word + "?" } # => ["Hey?", "Jude?"]
+p [false, true].my_map { |bool| !bool } # => [true, false]
+my_proc = Proc.new {|num| num > 10 }
+p [18, 22, 5, 6] .my_map(my_proc) {|num| num < 10 } # => true true false false
+puts
