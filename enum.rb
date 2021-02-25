@@ -65,5 +65,20 @@ module Enumerable
   def my_none?(input = nil, &block)
     !my_any?(input, &block)
   end
+
+  def my_count(arg = nil)
+    count = 0
+    if block_given?
+      my_each { |i| count += 1 if yield(i) }
+    elsif !arg.nil?
+      if to_a.include? arg
+        to_a.length.times do |i|
+          count += 1 if to_a[i] == arg
+        end
+      end
+      count
+    end
+    count
+  end
   # rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 end
