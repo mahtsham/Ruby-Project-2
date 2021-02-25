@@ -71,7 +71,6 @@ module Enumerable
   def my_none?(input = nil, &block)
     !my_any?(input, &block)
   end
-
   def my_count(arg = nil)
     count = 0
     if block_given?
