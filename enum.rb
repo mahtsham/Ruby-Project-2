@@ -58,6 +58,8 @@ module Enumerable
 
     elsif arg[0].is_a? Regexp
       my_each { |n| return true if arg[0].match(n) }
+    elsif arg[0].is_a? Class
+      my_each { |n| return true if n.class.ancestors.include?(arg[0]) }
 
     else
       my_each { |n| return true if n == arg[0] }
