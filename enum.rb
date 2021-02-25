@@ -101,11 +101,17 @@ module Enumerable
     a
   end
 
-  def my_inject(arg = nil)
-    my_each do |n|
-      arg = arg ? yield(arg, n) : self[0]
+  def my_inject(start = nil, sym = nil)
+    if (!start.nil? && sym.nil?) && (start.is_a?(Symbol) || start.is_a?(String))
+      sym = start
+      start = nil
     end
-    arg
+    if !block_given? && !sym.nil?
+      to_a.my_each { |e| start = start.nil? ? e : start.send(sym, e) }
+    else
+      to_a.my_each { |e| start = start.nil? ? e : yield(start, e) }
+    end
+    start
   end
   # rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 end
