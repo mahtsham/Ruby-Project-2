@@ -29,11 +29,11 @@ module Enumerable
   end
 
   def my_all?(arg = nil)
-    ar = self
-    return ar.all?(arg) if arg
+    a = self
+    return a.all?(arg) if arg
 
     if block_given?
-      ar.my_each do |i|
+      a.my_each do |i|
         next unless (yield i) == false
 
         return false
@@ -41,7 +41,7 @@ module Enumerable
       return true
     end
 
-    return false if ar.include? false or ar.include? nil
+    return false if a.include? false or a.include? nil
 
     true
   end
