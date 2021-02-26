@@ -60,6 +60,8 @@ module Enumerable
       my_each { |n| return true if arg[0].match(n) }
     elsif arg[0].is_a? Class
       my_each { |n| return true if n.class.ancestors.include?(arg[0]) }
+    elsif a.include? false or a.include? nil
+      return false
 
     else
       my_each { |n| return true if n == arg[0] }
@@ -119,3 +121,19 @@ end
 def multiply_els(array)
   array.my_inject(1) { |product, i| product * i }
 end
+#5. my_any? (example test cases)
+puts "my_any?"
+p [7, 10, 3, 5].my_any? { |n| n.even? } # => true
+p [7, 10, 4, 5].my_any?() { |n| n.even? } # => true
+p ["q", "r", "s", "i"].my_any? { |char| "aeiou".include?(char) } # => true
+p [7, 11, 3, 5].my_any? { |n| n.even? } # => false
+p ["q", "r", "s", "t"].my_any? { |char| "aeiou".include?(char) } # => false
+# test cases required by tse reviewer
+p [1, nil, false].my_any?(1) # => true
+p [1, nil, false].my_any?(Integer) # => true
+p ['dog', 'door', 'rod', 'blade'].my_any?(/z/) # => false
+p [1, 2 ,3].my_any?(1) # => true
+p [3,4,7,11].my_any?(Numeric)  # => true
+p [3,4,7,11].my_any?(Integer) # => true
+p %w[jes,umair,jesagain,hello].my_any?('jes') # => false
+puts
