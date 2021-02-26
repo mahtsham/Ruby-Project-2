@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module Enumerable
   # rubocop:disable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
   def my_each
@@ -68,8 +69,19 @@ module Enumerable
     false
   end
 
-  def my_none?(input = nil, &block)
-    !my_any?(input, &block)
+  def my_none?(arg = nil)
+    array = self
+    return array.none?(arg) if arg
+
+    if block_given?
+      array.my_each do |e|
+        next unless (yield e) == true
+
+        return false
+      end
+      return true
+    end
+    !array[array.length - 1]
   end
 
   def my_count(arg = nil)
@@ -116,6 +128,7 @@ module Enumerable
   # rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
 end
 
+# rubocop:enable Metrics/ModuleLength
 def multiply_els(array)
   array.my_inject(1) { |product, i| product * i }
 end
