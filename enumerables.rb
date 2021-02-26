@@ -70,18 +70,18 @@ module Enumerable
   end
 
   def my_none?(arg = nil)
-    array = self
-    return array.none?(arg) if arg
+    list = self
+    return list.none?(arg) if arg
 
     if block_given?
-      array.my_each do |e|
+      list.my_each do |e|
         next unless (yield e) == true
 
         return false
       end
       return true
     end
-    !array[array.length - 1]
+    !list[list.length - 1]
   end
 
   def my_count(arg = nil)
