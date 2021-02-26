@@ -3,9 +3,9 @@ module Enumerable
   def my_each
     return to_enum unless block_given?
 
-    length = size
-    length.times do |n|
-      yield(self[n])
+    arr = to_a
+    arr.length.times do |n|
+      yield(arr[n])
     end
     self
   end
