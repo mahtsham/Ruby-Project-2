@@ -26,7 +26,14 @@ it 'iterates and return array for not matched result' do
     my_array.my_each_with_index { |x, v| sum = x + sum }
     expect(sum).to eq(15)
 end
-
-
 end
+describe '#my_select' do 
+it 'return even numbers' do
+ expect(my_array.my_select { |n| n.even? }).to eql([2, 4])
+end
+it 'return even numbers' do
+    expect(my_array.my_select { |n| n.even? }).to_not eql([3, 5])
+end
+end
+
 end
