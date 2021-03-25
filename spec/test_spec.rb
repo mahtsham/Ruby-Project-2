@@ -14,7 +14,19 @@ describe Enumerable do
         expect(sum).to eq(15)
     end
 end 
+describe '#my_each_with_index' do
+it 'iterates and return array' do
+  expect(my_array.my_each_with_index { |e, v| "#{e} : #{v}"  }).to eql([1, 2, 3, 4, 5])
+end
+it 'iterates and return array for not matched result' do
+    expect(my_array.my_each_with_index { |e, v| "#{e} : #{v}"  }).to_not eql([1, 2, 3, 4])
+  end
+  it 'calculate sum of array' do
+    sum = 0
+    my_array.my_each_with_index { |x, v| sum = x + sum }
+    expect(sum).to eq(15)
+end
 
 
-
+end
 end
