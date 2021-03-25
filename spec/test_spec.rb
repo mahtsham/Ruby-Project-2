@@ -36,11 +36,19 @@ describe Enumerable do
     end
   end
   describe '#my_all?' do
-    it 'return even numbers' do
+    it 'return true if all array is odd' do
       expect([3, 5, 7, 11].my_all?(&:odd?)).to eql(true)
     end
-    it 'return even numbers' do
+    it 'return false if all array is is not odd' do
       expect([2, 4, 8, 16].my_all?(&:odd?)).to eql(false)
     end
   end
+  describe '#my_any?' do
+  it 'return even numbers' do
+    expect(my_array.my_any?() { |n| n.even? }).to eql(true)
+  end
+  it 'return even numbers' do
+    expect(my_array.my_any?() { |n| n > 5 }).to eql(false)
+  end
+end
 end
