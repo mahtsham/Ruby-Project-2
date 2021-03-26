@@ -26,6 +26,12 @@ Verify that the installation was successful by simply running the following comm
 
 Which should print a few lines about not finding any examples. This is ok and means it's working!
 
+## RSPEC
+- We can check all the test cases by running rspec.
+- To check we have to write rspec in the terminal.
+- This will run all the test cases which are preset in spec directoy
+- In spec directory there is a file named test_spec.rb which holds all the test cases
+
 ## Authors
 
 👤 **Author1**
