@@ -66,5 +66,8 @@ describe Enumerable do
     it 'return count of odd numbers in array' do
       expect(my_array.my_count(&:odd?)).to eql(3)
     end
+    it 'return count of total array' do
+        expect(my_array.my_count).to eql(5)
+    end
   end
 end
