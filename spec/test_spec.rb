@@ -44,11 +44,19 @@ describe Enumerable do
     end
   end
   describe '#my_any?' do
-  it 'return even numbers' do
-    expect(my_array.my_any?() { |n| n.even? }).to eql(true)
+    it 'return true if array has any even numbers' do
+      expect(my_array.my_any?(&:even?)).to eql(true)
+    end
+    it 'return false if array has not any numbers greater than 5' do
+      expect(my_array.my_any? { |n| n > 5 }).to eql(false)
+    end
   end
-  it 'return even numbers' do
-    expect(my_array.my_any?() { |n| n > 5 }).to eql(false)
+  describe '#my_none?' do
+    it 'return false if array has any even numbers' do
+      expect(my_array.my_none?(&:even?)).to eql(false)
+    end
+    it 'return true if array not has integer 6' do
+      expect(my_array.my_none?(6)).to eql(true)
+    end
   end
-end
 end
