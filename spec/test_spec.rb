@@ -71,11 +71,22 @@ describe Enumerable do
     end
   end
   describe '#my_map?' do
-    it 'return false if array has any even numbers' do
+    it 'return mutiply every element of array with 2' do
       expect(my_array.my_map { |n| 2 * n }).to eql([2, 4, 6, 8, 10])
     end
-    it 'return true if array not has integer 6' do
+    it 'return true if value is greater than 3 rather false' do
       expect(my_array.my_map { |x| x > 3 }).to eq([false, false, false, true, true])
+    end
+  end
+  describe '#my_inject' do
+    it 'return sum of whole array and parameter' do
+      expect(my_array.my_inject(20) { |e, v| e + v }).to eql(35)
+    end
+    it 'return sum of array' do
+      expect(my_array.my_inject { |e, v| e + v }).to eql(15)
+    end
+    it 'return value is not equal to expected value' do
+      expect([1, 3, 5].my_inject { |e, v| e + v }).to_not eql(15)
     end
   end
 end
