@@ -70,4 +70,12 @@ describe Enumerable do
         expect(my_array.my_count).to eql(5)
     end
   end
+  describe '#my_map?' do
+  it 'return false if array has any even numbers' do
+    expect(my_array.my_map { |n| 2 * n }).to eql([2, 4, 6, 8, 10])
+  end
+  it 'return true if array not has integer 6' do
+    expect(my_array.my_map { |x| x > 3 }).to eq([false, false, false, true, true])
+  end
+end
 end
