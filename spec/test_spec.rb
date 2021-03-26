@@ -89,4 +89,12 @@ describe Enumerable do
       expect([1, 3, 5].my_inject { |e, v| e + v }).to_not eql(15)
     end
   end
+  describe '#multiply_els' do
+    it 'multiplies all element of array and return it' do
+      expect(multiply_els(my_array)).to eql(120)
+    end
+    it 'multiplies all element of array and return it' do
+      expect(multiply_els([1, 2, 6])).to_not eql(120)
+    end
+  end
 end
