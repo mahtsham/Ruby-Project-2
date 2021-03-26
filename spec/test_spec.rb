@@ -59,4 +59,12 @@ describe Enumerable do
       expect(my_array.my_none?(6)).to eql(true)
     end
   end
+  describe '#my_count' do
+    it 'return count of even numbers in array' do
+      expect(my_array.my_count(&:even?)).to eql(2)
+    end
+    it 'return count of odd numbers in array' do
+      expect(my_array.my_count(&:odd?)).to eql(3)
+    end
+  end
 end
